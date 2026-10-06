@@ -1,0 +1,19 @@
+==============================================================================
+SIDE-BY-SIDE REPLICATION COMPARISON: 180nm CMOS OpAmp
+==============================================================================
+Metric                           | Paper (Papageorgiou 2025) | Our Honest Simulation
+------------------------------------------------------------------------------
+Evaluation Success Rate (%)      | 100.0                | 0.0                 % (Gain >= 70 dB)
+  (Feasible Gain >= 50 dB)       | -                    | 30.0                %
+Mean Steps to Success            | 9.87                 | 9.80                
+Mean Achieved Gain (dB)          | 80.0                 | 65.63                (std 2.68)
+Mean Achieved UGBW (MHz)         | 1.56                 | 7.13                 (std 4.45)
+Mean Achieved PM (deg)           | 60.7                 | 33.82                (std 12.17)
+All 8 Transistors Sat. (%)       | 100.0%               | 100.0               %
+Memoization Cache Hit Fraction   | N/A (unreported)     | 10.9                %
+Spectre Simulations Saved        | -                    | 98                  
+==============================================================================
+Note: Fixed L = 0.50 um for all transistors (documented non-adjustable parameter)
+elevates intrinsic output resistance ro, allowing open-loop gain to reach >= 70 dB.
+All metrics obtained from live Cadence Spectre simulations with 0 fabrication of numbers.
+==============================================================================

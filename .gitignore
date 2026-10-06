@@ -15,8 +15,10 @@ __pycache__/
 *.tr0
 *.sw0
 *.log
+*.lock
+scratch/
+memo/locks/
 simulation/
-venv/
 venv/
 *.so
 __pycache__/

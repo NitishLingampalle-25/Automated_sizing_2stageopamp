@@ -1,0 +1,43 @@
+{
+  "n_episodes": 50,
+  "success_rate_final_70db": 0.0,
+  "success_rate_feasible_50db": 30.0,
+  "mean_steps_to_success_final": NaN,
+  "mean_steps_to_success_feasible": 9.8,
+  "gain_db": {
+    "mean": 65.6330918429859,
+    "std": 2.683981164538549,
+    "min": 60.76448226015956,
+    "max": 70.95680261439145
+  },
+  "ugbw_mhz": {
+    "mean": 7.132928288168225,
+    "std": 4.450490808636371,
+    "min": 3.241816330150628,
+    "max": 25.711878193250236
+  },
+  "pm_deg": {
+    "mean": 33.82426658253799,
+    "std": 12.167956982010203,
+    "min": 6.0805532920515475,
+    "max": 51.217685506918116
+  },
+  "pdc_uw": {
+    "mean": 161.06611123258145,
+    "std": 2.9143202508334607
+  },
+  "all_sat_rate": 100.0,
+  "memoization": {
+    "eval_simulations": 799,
+    "eval_cache_hits": 98,
+    "total_eval_evaluations": 897,
+    "cache_hit_fraction": 0.10925306577480491
+  },
+  "paper_reference_180nm": {
+    "success_rate": 100.0,
+    "mean_steps": 9.87,
+    "mean_gain_db": 80.0,
+    "mean_ugbw_mhz": 1.56,
+    "mean_pm_deg": 60.7
+  }
+}
