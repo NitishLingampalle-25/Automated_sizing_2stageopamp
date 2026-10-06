@@ -63,6 +63,7 @@ import argparse
 def main():
     parser = argparse.ArgumentParser(description="Stage 3: PPO Training")
     parser.add_argument("--resume", action="store_true", help="Resume from latest checkpoint")
+    parser.add_argument("--finetune", type=int, default=0, help="Number of fine-tuning steps from latest checkpoint")
     args = parser.parse_args()
 
     log_file = os.path.join(PROJECT_ROOT, "logs", "stage3.log")
@@ -72,7 +73,9 @@ def main():
     logger.info("=" * 70)
     logger.info("STAGE 3: PPO REINFORCEMENT LEARNING TRAINING (180nm CMOS OpAmp)")
     logger.info("=" * 70)
-    if args.resume:
+    if args.finetune > 0:
+        logger.info(f"Mode: FINE-TUNE ({args.finetune} steps)")
+    elif args.resume:
         logger.info("Mode: RESUME enabled")
 
     bounds_file = find_latest_bounds_file()
@@ -83,13 +86,14 @@ def main():
     results_dir = stage2_dir
     logger.info(f"Writing Stage 3 outputs to: {results_dir}")
 
-    # Train PPO agent
+    # Train or fine-tune PPO agent
     results = train_ppo_agent(
         results_dir=results_dir,
         bounds_file=bounds_file,
         total_timesteps=20000,
         seed=42,
-        resume=args.resume,
+        resume=(args.resume or args.finetune > 0),
+        finetune_steps=args.finetune,
     )
 
     logger.info("=" * 70)

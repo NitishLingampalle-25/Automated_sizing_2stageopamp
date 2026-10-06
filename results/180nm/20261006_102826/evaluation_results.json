@@ -1,37 +1,37 @@
 {
   "n_episodes": 50,
   "success_rate_final_70db": 0.0,
-  "success_rate_feasible_50db": 30.0,
+  "success_rate_feasible_50db": 0.0,
   "mean_steps_to_success_final": NaN,
-  "mean_steps_to_success_feasible": 9.8,
+  "mean_steps_to_success_feasible": NaN,
   "gain_db": {
-    "mean": 65.6330918429859,
-    "std": 2.683981164538549,
-    "min": 60.76448226015956,
-    "max": 70.95680261439145
+    "mean": 72.20644804692095,
+    "std": 0.0035778295927609695,
+    "min": 72.20402882880572,
+    "max": 72.21429644387726
   },
   "ugbw_mhz": {
-    "mean": 7.132928288168225,
-    "std": 4.450490808636371,
-    "min": 3.241816330150628,
-    "max": 25.711878193250236
+    "mean": 14.129553864024787,
+    "std": 0.08816939283898374,
+    "min": 13.512398943554388,
+    "max": 14.144054325280482
   },
   "pm_deg": {
-    "mean": 33.82426658253799,
-    "std": 12.167956982010203,
-    "min": 6.0805532920515475,
-    "max": 51.217685506918116
+    "mean": 9.295126723457546,
+    "std": 0.06598767783066957,
+    "min": 9.284450801421883,
+    "max": 9.757022981659617
   },
   "pdc_uw": {
-    "mean": 161.06611123258145,
-    "std": 2.9143202508334607
+    "mean": 167.59787324950216,
+    "std": 0.016480635920830364
   },
   "all_sat_rate": 100.0,
   "memoization": {
-    "eval_simulations": 799,
-    "eval_cache_hits": 98,
-    "total_eval_evaluations": 897,
-    "cache_hit_fraction": 0.10925306577480491
+    "eval_simulations": 575,
+    "eval_cache_hits": 475,
+    "total_eval_evaluations": 1050,
+    "cache_hit_fraction": 0.4523809523809524
   },
   "paper_reference_180nm": {
     "success_rate": 100.0,

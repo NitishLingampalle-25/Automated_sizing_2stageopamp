@@ -260,6 +260,7 @@ def train_ppo_agent(
     seed: int = 42,
     num_envs: Optional[int] = None,
     resume: bool = False,
+    finetune_steps: int = 0,
 ) -> Dict[str, Any]:
     """
     Instantiates environment, sets up SB3 PPO model, and runs training with checkpoints.
@@ -347,27 +348,37 @@ def train_ppo_agent(
             pass
     atexit.register(save_on_exit)
 
-    remaining_steps = max(0, total_timesteps - initial_step)
-    logger.info(f"Beginning PPO training: target={total_timesteps}, remaining={remaining_steps} timesteps...")
-    start_time = time.time()
-    if remaining_steps > 0:
-        model.learn(total_timesteps=remaining_steps, callback=callback, reset_num_timesteps=False)
-    training_time = time.time() - start_time
-    logger.info(f"PPO training finished in {training_time:.1f} s.")
-
-    last_50_successes = callback.episode_successes[-50:] if len(callback.episode_successes) >= 50 else callback.episode_successes
-    final_success_rate = float(np.mean(last_50_successes)) if last_50_successes else 0.0
-    logger.info(f"Training budget complete. Recent success rate: {final_success_rate*100:.1f}%")
-
-    current_budget = total_timesteps
-    while total_timesteps >= 20000 and final_success_rate < 0.80 and current_budget < 50000:
-        increment = 10000
-        logger.info(f"Success rate {final_success_rate*100:.1f}% < 80%. Extending budget by {increment} steps (current={current_budget})...")
-        model.learn(total_timesteps=increment, callback=callback, reset_num_timesteps=False)
-        current_budget += increment
+    if finetune_steps > 0:
+        logger.info(f"Fine-tuning mode: training for {finetune_steps} additional timesteps...")
+        start_time = time.time()
+        model.learn(total_timesteps=finetune_steps, callback=callback, reset_num_timesteps=False)
+        training_time = time.time() - start_time
+        logger.info(f"Fine-tuning finished in {training_time:.1f} s.")
+        current_budget = initial_step + finetune_steps
         last_50_successes = callback.episode_successes[-50:] if len(callback.episode_successes) >= 50 else callback.episode_successes
         final_success_rate = float(np.mean(last_50_successes)) if last_50_successes else 0.0
-        logger.info(f"Budget now {current_budget} steps. Updated success rate: {final_success_rate*100:.1f}%")
+    else:
+        remaining_steps = max(0, total_timesteps - initial_step)
+        logger.info(f"Beginning PPO training: target={total_timesteps}, remaining={remaining_steps} timesteps...")
+        start_time = time.time()
+        if remaining_steps > 0:
+            model.learn(total_timesteps=remaining_steps, callback=callback, reset_num_timesteps=False)
+        training_time = time.time() - start_time
+        logger.info(f"PPO training finished in {training_time:.1f} s.")
+
+        last_50_successes = callback.episode_successes[-50:] if len(callback.episode_successes) >= 50 else callback.episode_successes
+        final_success_rate = float(np.mean(last_50_successes)) if last_50_successes else 0.0
+        logger.info(f"Training budget complete. Recent success rate: {final_success_rate*100:.1f}%")
+
+        current_budget = total_timesteps
+        while total_timesteps >= 20000 and final_success_rate < 0.80 and current_budget < 50000:
+            increment = 10000
+            logger.info(f"Success rate {final_success_rate*100:.1f}% < 80%. Extending budget by {increment} steps (current={current_budget})...")
+            model.learn(total_timesteps=increment, callback=callback, reset_num_timesteps=False)
+            current_budget += increment
+            last_50_successes = callback.episode_successes[-50:] if len(callback.episode_successes) >= 50 else callback.episode_successes
+            final_success_rate = float(np.mean(last_50_successes)) if last_50_successes else 0.0
+            logger.info(f"Budget now {current_budget} steps. Updated success rate: {final_success_rate*100:.1f}%")
 
     model.save(model_path)
     logger.info(f"Saved trained PPO model to {model_path}")

@@ -4,14 +4,14 @@ SIDE-BY-SIDE REPLICATION COMPARISON: 180nm CMOS OpAmp
 Metric                           | Paper (Papageorgiou 2025) | Our Honest Simulation
 ------------------------------------------------------------------------------
 Evaluation Success Rate (%)      | 100.0                | 0.0                 % (Gain >= 70 dB)
-  (Feasible Gain >= 50 dB)       | -                    | 30.0                %
-Mean Steps to Success            | 9.87                 | 9.80                
-Mean Achieved Gain (dB)          | 80.0                 | 65.63                (std 2.68)
-Mean Achieved UGBW (MHz)         | 1.56                 | 7.13                 (std 4.45)
-Mean Achieved PM (deg)           | 60.7                 | 33.82                (std 12.17)
+  (Feasible Gain >= 50 dB)       | -                    | 0.0                 %
+Mean Steps to Success            | 9.87                 | nan                 
+Mean Achieved Gain (dB)          | 80.0                 | 72.21                (std 0.00)
+Mean Achieved UGBW (MHz)         | 1.56                 | 14.13                (std 0.09)
+Mean Achieved PM (deg)           | 60.7                 | 9.30                 (std 0.07)
 All 8 Transistors Sat. (%)       | 100.0%               | 100.0               %
-Memoization Cache Hit Fraction   | N/A (unreported)     | 10.9                %
-Spectre Simulations Saved        | -                    | 98                  
+Memoization Cache Hit Fraction   | N/A (unreported)     | 45.2                %
+Spectre Simulations Saved        | -                    | 475                 
 ==============================================================================
 Note: Fixed L = 0.50 um for all transistors (documented non-adjustable parameter)
 elevates intrinsic output resistance ro, allowing open-loop gain to reach >= 70 dB.

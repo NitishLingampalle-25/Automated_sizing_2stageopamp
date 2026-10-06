@@ -28,7 +28,7 @@ logger = logging.getLogger("OpAmpEnv")
 
 # Paper's training-gate target specifications
 TARGET_SPECS = {
-    "gain_db": 30.0,       # >= 30 dB
+    "gain_db": 70.0,       # Strict target: >= 70 dB
     "ugbw": 1.0e6,         # >= 1 MHz
     "pm": 45.0,            # >= 45 deg
     "n_unsat": 0,          # all 8 transistors in saturation
@@ -197,7 +197,7 @@ class OpAmpPaperEnv(gym.Env):
         n_unsat = max(0, 8 - n_sat)
 
         # Normalization divisors for dimensionless sum
-        g_t, g_scale = TARGET_SPECS["gain_db"], 30.0
+        g_t, g_scale = TARGET_SPECS["gain_db"], 5.0
         u_t, u_scale = TARGET_SPECS["ugbw"], 1.0e6
         p_t, p_scale = TARGET_SPECS["pm"], 45.0
 
@@ -213,16 +213,16 @@ class OpAmpPaperEnv(gym.Env):
             def_gain = max(0.0, g_t - gain_db) / g_scale
             def_ugbw = max(0.0, u_t - ubw if (ubw := ugbw) is not None else 0.0) / u_scale
             def_pm   = max(0.0, p_t - pm) / p_scale
-            sum_deficit = def_gain + def_ugbw + def_pm
+            sum_deficit = 5.0 * def_gain + 1.0 * def_ugbw + 2.0 * def_pm
 
             # r = - sum_deficits - 5 * n_unsat - 100
             reward = float(-sum_deficit - 5.0 * n_unsat - 100.0)
         else:
             # Overshoot reward (positive incentive for exceeding targets)
-            os_gain = abs(gain_db - g_t) / g_scale
-            os_ugbw = abs(ugbw - u_t) / u_scale
-            os_pm   = abs(pm - p_t) / p_scale
-            sum_overshoot = os_gain + os_ugbw + os_pm
+            os_gain = max(0.0, gain_db - g_t) / g_scale
+            os_ugbw = max(0.0, ugbw - u_t) / u_scale
+            os_pm   = max(0.0, pm - p_t) / p_scale
+            sum_overshoot = 5.0 * os_gain + 0.5 * os_ugbw + 2.0 * os_pm
 
             # r = sum_overshoot + 0.01
             reward = float(sum_overshoot + 0.01)
