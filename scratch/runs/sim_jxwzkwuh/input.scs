@@ -1,0 +1,23 @@
+// test
+simulator lang=spectre
+include "/home/install/FOUNDRY/analog/gpdk180/gpdk.scs" section=NN
+
+vdd (vdd 0) vsource dc=0.9
+vss (vss 0) vsource dc=-0.9
+vinn (inn 0) vsource dc=0.0
+vinp (inp 0) vsource dc=0.0 mag=1.0
+
+m1 (d1 inn s12 vss) nmos1 w=3.0u l=0.18u as=1.08p ad=1.08p ps=6.72u pd=6.72u
+m2 (d2 inp s12 vss) nmos1 w=3.0u l=0.18u as=1.08p ad=1.08p ps=6.72u pd=6.72u
+m3 (d1 d1 vdd vdd) pmos1 w=9.0u l=0.18u as=3.24p ad=3.24p ps=18.72u pd=18.72u
+m4 (d2 d1 vdd vdd) pmos1 w=9.0u l=0.18u as=3.24p ad=3.24p ps=18.72u pd=18.72u
+m5 (s12 nbias vss vss) nmos1 w=160.0u l=0.18u as=57.6p ad=57.6p ps=320.72u pd=320.72u
+m6 (out d2 vdd vdd) pmos1 w=25.0u l=0.18u as=9.0p ad=9.0p ps=50.72u pd=50.72u
+m7 (out nbias vss vss) nmos1 w=160.0u l=0.18u as=57.6p ad=57.6p ps=320.72u pd=320.72u
+m8 (nbias nbias vss vss) nmos1 w=160.0u l=0.18u as=57.6p ad=57.6p ps=320.72u pd=320.72u
+ibias (vdd nbias) isource dc=30u
+cc (out d2) capacitor c=1.5p
+cl (out 0) capacitor c=10.0p
+
+dcOp dc write="spectre.dc"
+acSweep ac start=1 stop=100M dec=10

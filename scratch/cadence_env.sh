@@ -1,0 +1,5 @@
+export PATH="/home/install/SPECTRE211/bin:$PATH"
+export CDS_LIC_FILE="5280@cadence"
+export LM_LICENSE_FILE="5280@cadence"
+export CDS_Netlisting_Mode="Analog"
+export CDS_AUTO_64BIT="ALL"

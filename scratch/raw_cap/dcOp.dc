@@ -1,0 +1,129 @@
+HEADER
+"PSFversion" "1.00"
+"simulator" "spectre"
+"version" "21.1.0.546.isr13"
+"date" "10:44:54 AM, Mon Oct 5, 2026"
+"design" ""
+"analysis type" "dc"
+"analysis name" "dcOp"
+"analysis description" "DC Analysis `dcOp'"
+"xVecSorted" "unsorted"
+"tolerance.relative" 0.00100000
+"reltol" 0.00100000
+"abstol(V)" 1.00000e-06
+"abstol(I)" 1.00000e-12
+"temp" 27.0000
+"tnom" 27.0000
+"tempeffects" "all"
+"gmindc" 1.00000e-12
+TYPE
+"LogicV" FLOAT DOUBLE PROP(
+"key" "node"
+)
+"V" FLOAT DOUBLE PROP(
+"units" "V"
+"key" "node"
+"tolerance" 1.00000e-06
+)
+"I" FLOAT DOUBLE PROP(
+"units" "A"
+"key" "branch"
+"tolerance" 1.00000e-12
+)
+"MMF" FLOAT DOUBLE PROP(
+"units" "A*turn"
+"key" "node"
+"tolerance" 1.00000e-12
+)
+"Wb" FLOAT DOUBLE PROP(
+"units" "Wb"
+"key" "node"
+"tolerance" 1.00000e-09
+)
+"Temp" FLOAT DOUBLE PROP(
+"units" "C"
+"key" "node"
+"tolerance" 0.000100000
+)
+"Pwr" FLOAT DOUBLE PROP(
+"units" "W"
+"key" "node"
+"tolerance" 1.00000e-09
+)
+"U" FLOAT DOUBLE PROP(
+"units" ""
+"key" "node"
+"tolerance" 1.00000e-06
+)
+"V/Sec" FLOAT DOUBLE PROP(
+"units" "V/s"
+"key" "node"
+"tolerance" 0.000100000
+)
+"I/Sec" FLOAT DOUBLE PROP(
+"units" "A/s"
+"key" "node"
+"tolerance" 1.00000e-06
+)
+"1/Sec" FLOAT DOUBLE PROP(
+"units" "1/s"
+"key" "node"
+"tolerance" 0.000100000
+)
+"HOD" FLOAT DOUBLE PROP(
+"units" ""
+"key" "node"
+"tolerance" 0.0100000
+)
+"Q" FLOAT DOUBLE PROP(
+"units" "Coul"
+"key" "node"
+"tolerance" 1.00000e-15
+)
+VALUE
+"vdd" "V" 9.000000000000000e-01
+"vss" "V" -9.000000000000000e-01
+"inp" "V" 0.000000000000000e+00
+"inm" "V" 0.000000000000000e+00
+"nbias" "V" -5.417989640843248e-01
+"tail" "V" -6.113933211472604e-01
+"net_m3" "V" 3.418180307024329e-01
+"net_m4" "V" 3.418180307024224e-01
+"vout" "V" 2.965995088746997e-01
+"M1:1" "I" 1.422712708934850e-05
+"M1:2" "I" 0.000000000000000e+00
+"M1:3" "I" -1.422709080014434e-05
+"M1:4" "I" -3.628920466046065e-11
+"M2:1" "I" 1.422712708934850e-05
+"M2:2" "I" 0.000000000000000e+00
+"M2:3" "I" -1.422709080014226e-05
+"M2:4" "I" -3.628920466045847e-11
+"M3:1" "I" -1.422712708934850e-05
+"M3:2" "I" 0.000000000000000e+00
+"M3:3" "I" 1.422712023376430e-05
+"M3:4" "I" 6.855584049589459e-12
+"M4:1" "I" -1.422712708934850e-05
+"M4:2" "I" 0.000000000000000e+00
+"M4:3" "I" 1.422712023376434e-05
+"M4:4" "I" 6.855584049589459e-12
+"M5:1" "I" 2.845418160028646e-05
+"M5:2" "I" 0.000000000000000e+00
+"M5:3" "I" -2.845416992659675e-05
+"M5:4" "I" -1.167368971032073e-11
+"M6:1" "I" -4.727902736992319e-05
+"M6:2" "I" 0.000000000000000e+00
+"M6:3" "I" 4.727902051480384e-05
+"M6:4" "I" 6.855119350320439e-12
+"M7:1" "I" 4.727902736992319e-05
+"M7:2" "I" 0.000000000000000e+00
+"M7:3" "I" -4.727802004232323e-05
+"M7:4" "I" -1.007327599961063e-09
+"M8:1" "I" 3.000000000000000e-05
+"M8:2" "I" 0.000000000000000e+00
+"M8:3" "I" -2.999998832630953e-05
+"M8:4" "I" -1.167369046871243e-11
+"Vdd:p" "I" -1.057332815486199e-04
+"Vin_m:p" "I" 0.000000000000000e+00
+"Vin_p:p" "I" 0.000000000000000e+00
+"Vss:p" "I" 1.057332815486190e-04
+END

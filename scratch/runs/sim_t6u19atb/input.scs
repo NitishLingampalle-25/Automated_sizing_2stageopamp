@@ -1,0 +1,37 @@
+// Two-Stage Miller-Compensated OpAmp (Papageorgiou et al., AEU 2025)
+// Discrete parameters: Wdiff=2.20u, Wnb=169.0u, Wpo=8.00u, Wbp=34.0u, Cc=1.20p
+simulator lang=spectre
+include "/home/install/FOUNDRY/analog/180nm/models/spectre/gpdk.scs" section=NN
+opt options soft_bin=allmodels save=allpub subcktprobelvl=2
+
+// DC Supply and Bias Sources
+Vdd (vdd 0) vsource dc=0.9
+Vss (vss 0) vsource dc=-0.9
+Vin_p (inp 0) vsource dc=0 mag=1
+Vin_m (inm 0) vsource dc=0 mag=0
+Ibias (vdd nbias) isource dc=30u
+
+// Bias branch & tail current source (NMOS, W=Wnb, L=0.18u)
+M8 (nbias nbias vss vss) nmos1 w=169.0000u l=0.18u as=169.0000u*0.36u ad=169.0000u*0.36u ps=2*(169.0000u+0.36u) pd=2*(169.0000u+0.36u)
+M5 (tail nbias vss vss) nmos1 w=169.0000u l=0.18u as=169.0000u*0.36u ad=169.0000u*0.36u ps=2*(169.0000u+0.36u) pd=2*(169.0000u+0.36u)
+
+// First Stage: NMOS differential pair (W=Wdiff, L=0.18u)
+M1 (net_m3 inm tail vss) nmos1 w=2.2000u l=0.18u as=2.2000u*0.36u ad=2.2000u*0.36u ps=2*(2.2000u+0.36u) pd=2*(2.2000u+0.36u)
+M2 (net_m4 inp tail vss) nmos1 w=2.2000u l=0.18u as=2.2000u*0.36u ad=2.2000u*0.36u ps=2*(2.2000u+0.36u) pd=2*(2.2000u+0.36u)
+
+// First Stage: PMOS active load mirror (W=Wpo, L=0.18u)
+M3 (net_m3 net_m3 vdd vdd) pmos1 w=8.0000u l=0.18u as=8.0000u*0.36u ad=8.0000u*0.36u ps=2*(8.0000u+0.36u) pd=2*(8.0000u+0.36u)
+M4 (net_m4 net_m3 vdd vdd) pmos1 w=8.0000u l=0.18u as=8.0000u*0.36u ad=8.0000u*0.36u ps=2*(8.0000u+0.36u) pd=2*(8.0000u+0.36u)
+
+// Second Stage: PMOS common-source driver (W=Wbp, L=0.18u) & NMOS active load (W=Wnb, L=0.18u)
+M6 (vout net_m4 vdd vdd) pmos1 w=34.0000u l=0.18u as=34.0000u*0.36u ad=34.0000u*0.36u ps=2*(34.0000u+0.36u) pd=2*(34.0000u+0.36u)
+M7 (vout nbias vss vss) nmos1 w=169.0000u l=0.18u as=169.0000u*0.36u ad=169.0000u*0.36u ps=2*(169.0000u+0.36u) pd=2*(169.0000u+0.36u)
+
+// Compensation & Load
+Cc (net_m4 vout) capacitor c=1.2000p
+CL (vout 0) capacitor c=10p
+
+// Analyses
+dcOp dc
+opInfo info what=oppoint where=rawfile
+acSwp ac start=1 stop=100M dec=20

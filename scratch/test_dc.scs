@@ -1,0 +1,7 @@
+simulator lang=spectre
+include "/home/install/FOUNDRY/analog/180nm/models/spectre/gpdk.scs" section=NN
+
+Vdd (vdd 0) vsource dc=1.8
+M1 (vdd vdd 0 0) nmos1 w=2u l=0.18u
+
+dcOp dc

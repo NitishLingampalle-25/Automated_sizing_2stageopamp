@@ -1,0 +1,157 @@
+HEADER
+"PSFversion" "1.00"
+"simulator" "spectre"
+"version" "21.1.0.546.isr13"
+"date" "10:44:54 AM, Mon Oct 5, 2026"
+"design" ""
+"analysis type" "info.captab"
+"analysis name" "capInfo"
+"analysis description" "Circuit Information"
+"xVecSorted" "unknown"
+"tolerance.relative" 0.00100000
+TYPE
+"captab_line" STRUCT(
+"Variable" FLOAT DOUBLE
+"Fixed" FLOAT DOUBLE
+"Total" FLOAT DOUBLE
+) PROP(
+"key" "captab_key"
+)
+VALUE
+"inm : inm" "captab_line" (
+2.141396769668821e-15
+2.527789126335605e-15
+4.669185896004425e-15
+) PROP(
+"From Node" "inm"
+"To Node" "inm"
+)
+"inp : inp" "captab_line" (
+2.141396769668818e-15
+2.527789126335605e-15
+4.669185896004423e-15
+) PROP(
+"From Node" "inp"
+"To Node" "inp"
+)
+"M1:int_d : M1:int_d" "captab_line" (
+6.909372032333137e-10
+1.250600000000000e-15
+6.909384538333137e-10
+) PROP(
+"From Node" "M1:int_d"
+"To Node" "M1:int_d"
+)
+"M1:int_s : M1:int_s" "captab_line" (
+8.831198385541053e-10
+1.250600000000000e-15
+8.831210891541053e-10
+) PROP(
+"From Node" "M1:int_s"
+"To Node" "M1:int_s"
+)
+"M2:int_d : M2:int_d" "captab_line" (
+6.909372032333151e-10
+1.250600000000000e-15
+6.909384538333151e-10
+) PROP(
+"From Node" "M2:int_d"
+"To Node" "M2:int_d"
+)
+"M2:int_s : M2:int_s" "captab_line" (
+8.831198385541053e-10
+1.250600000000000e-15
+8.831210891541053e-10
+) PROP(
+"From Node" "M2:int_s"
+"To Node" "M2:int_s"
+)
+"M3:int_d : M3:int_d" "captab_line" (
+8.858357618067897e-10
+3.290100000000000e-15
+8.858390519067897e-10
+) PROP(
+"From Node" "M3:int_d"
+"To Node" "M3:int_d"
+)
+"M3:int_s : M3:int_s" "captab_line" (
+1.102207962664944e-09
+3.290100000000000e-15
+1.102211252764944e-09
+) PROP(
+"From Node" "M3:int_s"
+"To Node" "M3:int_s"
+)
+"M4:int_d : M4:int_d" "captab_line" (
+8.858357618067869e-10
+3.290100000000000e-15
+8.858390519067869e-10
+) PROP(
+"From Node" "M4:int_d"
+"To Node" "M4:int_d"
+)
+"M4:int_s : M4:int_s" "captab_line" (
+1.102207962664944e-09
+3.290100000000000e-15
+1.102211252764944e-09
+) PROP(
+"From Node" "M4:int_s"
+"To Node" "M4:int_s"
+)
+"nbias : nbias" "captab_line" (
+8.616776400436717e-10
+2.960427673790069e-13
+8.619736828110507e-10
+) PROP(
+"From Node" "nbias"
+"To Node" "nbias"
+)
+"net_m3 : net_m3" "captab_line" (
+1.858484910782571e-14
+1.324120331899392e-14
+3.182605242681962e-14
+) PROP(
+"From Node" "net_m3"
+"To Node" "net_m3"
+)
+"net_m4 : net_m4" "captab_line" (
+1.958348097295749e-14
+1.322060165949696e-14
+3.280408263245444e-14
+) PROP(
+"From Node" "net_m4"
+"To Node" "net_m4"
+)
+"tail : tail" "captab_line" (
+8.831203731344449e-10
+5.919260000000001e-14
+8.831795657344449e-10
+) PROP(
+"From Node" "tail"
+"To Node" "tail"
+)
+"vdd : vdd" "captab_line" (
+4.848710923115784e-09
+6.711304978490873e-15
+4.848717634420762e-09
+) PROP(
+"From Node" "vdd"
+"To Node" "vdd"
+)
+"vout : vout" "captab_line" (
+1.569476801736311e-09
+6.578270000000000e-14
+1.569542584436311e-09
+) PROP(
+"From Node" "vout"
+"To Node" "vout"
+)
+"vss : vss" "captab_line" (
+5.589775826234369e-09
+1.777107456316781e-13
+5.589953536980001e-09
+) PROP(
+"From Node" "vss"
+"To Node" "vss"
+)
+END

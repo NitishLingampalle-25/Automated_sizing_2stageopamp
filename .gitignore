@@ -1,0 +1,22 @@
+# Virtual Environments
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# PyTorch / checkpoints / large models
+*.pt
+*.pth
+*.bin
+
+# EDA & Simulation temporary outputs
+*.raw
+*.tr0
+*.sw0
+*.log
+simulation/
+venv/
+venv/
+*.so
+__pycache__/

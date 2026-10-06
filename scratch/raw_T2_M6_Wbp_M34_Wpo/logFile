@@ -1,0 +1,58 @@
+HEADER
+"PSFversion" "1.00"
+"Log Generator" "drlLog rev. 1.0"
+"Log Time Stamp" "Mon Oct  5 10:20:25 2026"
+"psfversion" "1.4.0"
+"simulator" "spectre"
+"version" "21.1.0.546.isr13"
+"date" "10:20:25 AM, Mon Oct 5, 2026"
+"design" ""
+"signalNameType" "spectre"
+"simMode" "Spectre"
+"measdgt" 0
+"ingold" 2
+"sst2usecolon" 0
+TYPE
+"analysisInst" STRUCT(
+"analysisType" STRING *
+"dataFile" STRING *
+"format" STRING *
+"parent" STRING *
+"sweepVariable" ARRAY ( * ) STRING *
+"description" STRING *
+)
+VALUE
+"dcOp-dc" "analysisInst" (
+"dc"
+"dcOp.dc"
+"PSF"
+""
+()
+"DC Analysis `dcOp'"
+) PROP(
+"data_type" "scalar"
+)
+
+"opInfo-info" "analysisInst" (
+"info"
+"opInfo.info"
+"PSF"
+""
+()
+"Circuit Information"
+) PROP(
+"data_type" "struct"
+)
+
+"acSwp-ac" "analysisInst" (
+"ac"
+"acSwp.ac"
+"PSF"
+""
+("freq")
+"AC Analysis `acSwp': freq = (1 Hz -> 100 MHz)"
+) PROP(
+"data_type" "swept_scalar"
+)
+
+END
